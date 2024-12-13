@@ -1,6 +1,6 @@
 {
-	"name": "@once-ui-system/nextjs-starter",
-	"version": "0.4.1",
+	"name": "tobe-energy",
+	"version": "0.1",
 	"scripts": {
 		"dev": "next dev",
 		"export": "next export",

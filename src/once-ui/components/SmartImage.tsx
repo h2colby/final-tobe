@@ -4,7 +4,8 @@ import React, { CSSProperties, useState, useRef, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
 import classNames from 'classnames';
 
-import { Flex, Skeleton } from '@/once-ui/components';
+import { Flex } from '@/once-ui/components';
+import { Skeleton } from '@/once-ui/components/Skeleton';
 
 export type SmartImageProps = ImageProps & {
     className?: string;
@@ -179,7 +180,7 @@ const SmartImage: React.FC<SmartImageProps> = ({
                             height: '100vh',
                             transform: 'translate(-50%, -50%)',
                         }}
-                        onClick={(e) => e.stopPropagation()}>
+                        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
                         {isVideo ? (
                             <video
                                 src={src}

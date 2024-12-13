@@ -1,6 +1,10 @@
 'use client';
 
-import { Button, Flex, Logo, NavIcon, SmartLink, ToggleButton, UserMenu } from '@/once-ui/components';
+import { Button, Flex, Logo } from '@/once-ui/components';
+import { NavIcon } from '@/once-ui/components/NavIcon';
+import { SmartLink } from '@/once-ui/components/SmartLink';
+import { ToggleButton } from '@/once-ui/components/ToggleButton';
+import { UserMenu } from '@/once-ui/components/UserMenu';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 

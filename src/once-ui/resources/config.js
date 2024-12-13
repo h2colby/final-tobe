@@ -16,15 +16,15 @@ const style = {
 
 // default metadata
 const meta = {
-    title: 'Once UI - Your Personalized Design System for Next.js',
-    description: 'An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.'
+    title: 'Tobe Energy - Delivering on Hydrogens Potential',
+    description: 'Tobe Energy: Revolutionizing hydrogen production with innovative, efficient, and sustainable solutions for a cleaner future.'
 }
 
 
 // default open graph data
 const og = {
-    title: 'Once UI for Next.js',
-    description: 'We let designers code and developers design.',
+    title: 'Tobe Energy - Delivering on Hydrogens Potential.',
+    description: 'Tobe Energy: Revolutionizing hydrogen production with innovative, efficient, and sustainable solutions for a cleaner future.',
     type: 'website'
 }
 
@@ -32,16 +32,15 @@ const og = {
 const schema = {
     logo: '',
     type: 'Organization',
-    name: 'One UI',
-    description: 'Once UI is an open-source design system and component library for Next.js.',
-    email: 'lorant@once-ui.com'
+    name: 'Tobe Energy',
+    description: 'Tobe Energy - Delivering on Hydrogens Potential.',
+    email: 'colby@tobe.energy'
 }
 
 // social links
 const social = {
-    twitter: 'https://www.twitter.com/_onceui',
-    linkedin: 'https://www.linkedin.com/company/once-ui/',
-    discord: 'https://discord.com/invite/5EyAQ4eNdS'
+    twitter: 'https://www.twitter.com/h2colby',
+    linkedin: 'https://www.linkedin.com/company/tobe-energy/'
 }
 
 export { baseURL, style, meta, og, schema, social };

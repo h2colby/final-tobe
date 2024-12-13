@@ -1,7 +1,11 @@
 import React, { useRef, useState, forwardRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Compressor from 'compressorjs';
-import { Flex, Icon, SmartImage, Spinner, Text } from '@/once-ui/components';
+import { Flex } from '@/once-ui/components';
+import { Icon } from '@/once-ui/components/Icon';
+import { SmartImage } from '@/once-ui/components/SmartImage';
+import { Spinner } from '@/once-ui/components/Spinner';
+import { Text } from '@/once-ui/components/Text';
 import styles from './MediaUpload.module.scss';
 
 interface MediaUploadProps {

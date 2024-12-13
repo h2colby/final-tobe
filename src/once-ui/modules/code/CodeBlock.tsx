@@ -5,7 +5,9 @@ import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import '@/once-ui/modules/code/CodeHighlight.css';
 import styles from '@/once-ui/modules/code/CodeBlock.module.scss';
 
-import { Flex, Button, IconButton, DropdownWrapper } from '@/once-ui/components';
+import { Flex, Button } from '@/once-ui/components';
+import { IconButton } from '@/once-ui/components/IconButton';
+import { DropdownWrapper } from '@/once-ui/components/DropdownWrapper';
 
 import Prism from 'prismjs';
 import 'prismjs/plugins/line-highlight/prism-line-highlight';
