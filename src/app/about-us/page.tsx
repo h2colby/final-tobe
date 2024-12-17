@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { PdfViewer } from '@/components/PdfViewer/PdfViewer';
 import { Header } from "@/components/Header";
 import styles from '../shared.module.css';
+import { YouTubeEmbed } from '@/components/YouTubeEmbed/YouTubeEmbed';
 
 // Add type declarations for missing JSX elements
 declare global {
@@ -134,6 +135,49 @@ export default function AboutUs() {
                 variant="display-strong-s"
                 className={styles.title}
               >
+                Making Green Hydrogen Practical and Affordable
+              </Heading>
+
+              <Flex 
+                fillWidth 
+                justifyContent="center" 
+                alignItems="center"
+                style={{ marginTop: '2rem' }}
+              >
+                <YouTubeEmbed
+                  videoId="aTfqcJznJc8"
+                  title="Tobe Energy Pitch"
+                />
+              </Flex>
+            </Flex>
+          </Grid>
+
+          {/* Add some spacing between the video and PDF sections */}
+          <Flex style={{ height: '2rem' }} />
+
+          {/* Original PDF Viewer section continues here */}
+          <Grid
+            radius="l"
+            border="neutral-medium"
+            borderStyle="solid-1"
+            columns="1col"
+            fillWidth
+            className={styles.card}
+          >
+            <Flex
+              fillWidth
+              paddingY="8"
+              paddingX="l"
+              direction="column"
+              gap="8"
+              style={{
+                paddingTop: '1rem'
+              }}
+            >
+              <Heading 
+                variant="display-strong-s"
+                className={styles.title}
+              >
                 Our Slide Deck
               </Heading>
               <Text 
@@ -143,8 +187,22 @@ export default function AboutUs() {
               >
                 Explore our slide deck to learn more about our technology, vision, and roadmap.
               </Text>
-              <Flex fillWidth justifyContent="center" style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
+              <Flex fillWidth justifyContent="center" direction="column" alignItems="center" style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
                 <PdfViewer filePath="/documents/slide-deck.pdf" />
+                <Flex justifyContent="center" paddingTop="m">
+                  <a
+                    href="/documents/slide-deck.pdf"
+                    download="tobe-energy-slide-deck.pdf"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <Button
+                      variant="secondary"
+                      suffixIcon="arrow-right"
+                    >
+                      Download Slide Deck
+                    </Button>
+                  </a>
+                </Flex>
               </Flex>
             </Flex>
           </Grid>
@@ -186,20 +244,20 @@ export default function AboutUs() {
               <Flex
                 direction="row"
                 gap="xl"
-                justifyContent="center"
+                justifyContent="space-between"
                 wrap
                 style={{
                   marginTop: '2rem',
                   width: '100%',
                   maxWidth: '1200px',
-                  margin: '2rem auto 2rem auto',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center'
+                  margin: '2rem auto',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '2rem'
                 }}
               >
                 {/* Caleb */}
-                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center', width: '250px' }}>
+                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center' }}>
                   <img
                     src="/images/calebheadshot.jpeg"
                     alt="Caleb Lareau"
@@ -220,7 +278,7 @@ export default function AboutUs() {
                 </Flex>
 
                 {/* Louis */}
-                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center', width: '250px' }}>
+                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center' }}>
                   <img
                     src="/images/louheadshot.jpeg"
                     alt="Louis Mounsey"
@@ -241,7 +299,7 @@ export default function AboutUs() {
                 </Flex>
 
                 {/* Colby */}
-                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center', width: '250px' }}>
+                <Flex direction="column" alignItems="center" gap="m" style={{ textAlign: 'center' }}>
                   <img
                     src="/images/colbyheadshot.jpeg"
                     alt="Colby DeWeese"
@@ -284,18 +342,46 @@ export default function AboutUs() {
         paddingX="l"
         paddingY="m"
         justifyContent="space-between"
+        alignItems="center"
         style={{ 
           borderTop: '1px solid #374151',
-          zIndex: 10,
-          bottom: 0
+          zIndex: 20,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '60px',
+          background: 'rgba(17, 24, 39, 0.95)',
+          backdropFilter: 'blur(8px)',
+          '@media (max-width: 640px)': {
+            flexDirection: 'column',
+            height: 'auto',
+            padding: '1rem',
+            gap: '0.5rem'
+          }
         }}
       >
-        <Text
-          variant="body-default-s" onBackground="neutral-weak"
+        <Text 
+          variant="body-default-s" 
+          onBackground="neutral-weak"
+          style={{
+            '@media (max-width: 640px)': {
+              textAlign: 'center',
+              marginBottom: '0.5rem'
+            }
+          }}
         >
-          © 2024 Tobe Energy, <Link href="https://github.com/h2colby/working-tobe">MIT License</Link>
+          © 2024 Tobe Energy, <Link href="https://github.com/h2colby">MIT License</Link>
         </Text>
-        <Flex gap="12">
+        <Flex 
+          gap="12" 
+          alignItems="center" 
+          justifyContent="center"
+          style={{
+            '@media (max-width: 640px)': {
+              width: '100%'
+            }
+          }}
+        >
           <Button
             href="https://twitter.com/h2colby"
             prefixIcon="twitter"

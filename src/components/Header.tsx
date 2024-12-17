@@ -8,7 +8,6 @@ import styles from '@/components/Header.module.scss';
 export const Header = () => {
     const [isPending] = useTransition();
 
-    // Updated navigation items:
     const navItems = [
         { icon: "home", href: "/", label: "Home" },
         { icon: "lightning", href: "/technology", label: "Technology" },
@@ -18,68 +17,62 @@ export const Header = () => {
     ];
 
     return (
-        <>
-            <Flex
+        <Flex 
+            className={styles.position}
+            as="header"
+            zIndex={9}
+            fillWidth 
+            padding={{ base: "4", m: "8" }}
+        >
+            <Flex 
                 className={styles.mask}
-                position="fixed" zIndex={9}
-                fillWidth minHeight="80" justifyContent="center">
-            </Flex>
-            <Flex style={{height: 'fit-content'}}
-                className={styles.position}
-                as="header"
-                zIndex={9}
-                fillWidth padding="8"
-                justifyContent="center">
-
-                {/* Top Left: Removed location */}
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                bottom="0"
+            />
+            
+            {/* Center Navigation */}
+            <Flex fillWidth justifyContent="center" position="relative">
                 <Flex
-                    paddingLeft="12" fillWidth
-                    alignItems="center"
-                    textVariant="body-default-s">
-                    {/* Nothing here now */}
-                </Flex>
-
-                {/* Center Navigation */}
-                <Flex fillWidth justifyContent="center">
+                    background="surface"
+                    border="neutral-medium"
+                    borderStyle="solid-1"
+                    radius="m-4"
+                    shadow="l"
+                    padding={{ base: "2", m: "4" }}
+                    justifyContent="center"
+                    width={{ base: "100%", m: "auto" }}
+                    maxWidth="100vw"
+                    overflow="auto"
+                >
                     <Flex
-                        background="surface"
-                        border="neutral-medium"
-                        borderStyle="solid-1"
-                        radius="m-4"
-                        shadow="l"
-                        padding="4"
-                        justifyContent="center"
-                    >
-                        <Flex
-                            gap="4"
-                            textVariant="body-default-s"
-                        >
-                            {navItems.map((item, index) => (
-                                <ToggleButton
-                                    key={index}
-                                    prefixIcon={item.icon}
-                                    href={item.href}
-                                    selected={false}
-                                    className={isPending ? 'pointer-events-none opacity-60' : ''}
-                                >
-                                    <Flex paddingX="2" hide="s">{item.label}</Flex>
-                                </ToggleButton>
-                            ))}
-                        </Flex>
-                    </Flex>
-                </Flex>
-
-                {/* Top Right: Removed Clock */}
-                <Flex fillWidth justifyContent="flex-end" alignItems="center">
-                    <Flex
-                        paddingRight="12"
-                        justifyContent="flex-end" alignItems="center"
+                        gap={{ base: "2", m: "4" }}  // Responsive gap
                         textVariant="body-default-s"
-                        gap="20">
-                        {/* Nothing here now */}
+                        width="100%"
+                        justifyContent={{ base: "space-between", m: "center" }}  // Space between on mobile
+                    >
+                        {navItems.map((item, index) => (
+                            <ToggleButton
+                                key={index}
+                                prefixIcon={item.icon}
+                                href={item.href}
+                                selected={false}
+                                className={`${isPending ? 'pointer-events-none opacity-60' : ''} ${styles.navButton}`}
+                            >
+                                <Flex 
+                                    paddingX={{ base: "1", m: "2" }}  // Responsive padding
+                                    hide={{ base: false, m: "s" }}  // Show text on mobile
+                                    fontSize={{ base: "xs", m: "sm" }}  // Smaller font on mobile
+                                >
+                                    {item.label}
+                                </Flex>
+                            </ToggleButton>
+                        ))}
                     </Flex>
                 </Flex>
             </Flex>
-        </>
-    )
+        </Flex>
+    );
 }

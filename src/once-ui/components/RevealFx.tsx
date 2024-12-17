@@ -1,93 +1,38 @@
 'use client';
 
-import React, { useState, useEffect, forwardRef } from 'react';
-import { SpacingToken } from '../types';
-import styles from './RevealFx.module.scss';
-import { Flex } from '.';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-interface RevealFxProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RevealFxProps {
 	children: React.ReactNode;
-	speed?: 'slow' | 'medium' | 'fast';
+	speed?: 'fast' | 'medium' | 'slow';
 	delay?: number;
-	revealedByDefault?: boolean;
-	translateY?: number | SpacingToken;
-	trigger?: boolean;
-	style?: React.CSSProperties;
-	className?: string;
+	translateY?: number;
 }
 
-const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(({
+export const RevealFx = ({
 	children,
 	speed = 'medium',
 	delay = 0,
-	revealedByDefault = false,
-	translateY,
-	trigger,
-	style,
-	className,
-	...rest
-}, ref) => {
-	const [isRevealed, setIsRevealed] = useState(revealedByDefault);
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setIsRevealed(true);
-		}, delay * 1000);
-
-		return () => clearTimeout(timer);
-	}, [delay]);
-
-	useEffect(() => {
-		if (trigger !== undefined) {
-			setIsRevealed(trigger);
-		}
-	}, [trigger]);
-
-	const getSpeedDuration = () => {
-		switch (speed) {
-			case 'fast':
-				return '1s';
-			case 'medium':
-				return '2s';
-			case 'slow':
-				return '3s';
-			default:
-				return '2s';
-		}
-	};
-
-	const getTranslateYValue = () => {
-		if (typeof translateY === 'number') {
-			return `${translateY}rem`;
-		} else if (typeof translateY === 'string') {
-			return `var(--static-space-${translateY})`;
-		}
-		return undefined;
-	};
-
-	const translateValue = getTranslateYValue();
-
-	const combinedClassName = `${styles.revealFx} ${isRevealed ? styles.revealed : styles.hidden} ${className || ''}`;
-
-	const revealStyle: React.CSSProperties = {
-		transitionDuration: getSpeedDuration(),
-		transform: isRevealed ? 'translateY(0)' : `translateY(${translateValue})`,
-		...style,
+	translateY = 0,
+}: RevealFxProps): JSX.Element => {
+	const speeds = {
+		fast: 0.3,
+		medium: 0.5,
+		slow: 0.7,
 	};
 
 	return (
-		<Flex
-			fillWidth
-			justifyContent="center"
-			ref={ref}
-			aria-hidden="true"
-			style={revealStyle}
-			className={combinedClassName}
-			{...rest}>
+		<motion.div
+			initial={{ opacity: 0, y: translateY }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{
+				duration: speeds[speed],
+				delay,
+				ease: 'easeOut',
+			}}
+		>
 			{children}
-		</Flex>
+		</motion.div>
 	);
-});
-
-RevealFx.displayName = 'RevealFx';
-export { RevealFx };
+};

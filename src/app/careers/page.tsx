@@ -25,6 +25,28 @@ const jobCardStyles = {
   }
 };
 
+const buttonStyles = {
+  applyButton: {
+    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.25) 100%)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
+    padding: '0.75rem 1.5rem',
+    transform: 'translateY(0)',
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    boxShadow: '0 0 20px rgba(99, 102, 241, 0.15)',
+    position: 'relative' as const,
+    paddingRight: '2.5rem',
+  },
+  arrow: {
+    content: '→',
+    position: 'absolute',
+    right: '1rem',
+    top: '50%',
+    transform: 'translateY(-50%) translateX(-10px)',
+    opacity: 0,
+    transition: 'all 0.3s ease',
+  }
+};
+
 export default function JobsPage() {
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [waitlistName, setWaitlistName] = useState('');
@@ -281,25 +303,6 @@ export default function JobsPage() {
                   </LetterFx>
                 </span>
               </Heading>
-              {/* Apply Now Button */}
-              <Button
-                variant="secondary"
-                onClick={openApplyForm}
-                style={{ 
-                  marginTop: '1.5rem',
-                  padding: '1rem 2.5rem',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  letterSpacing: '0.5px',
-                  transform: 'scale(1)',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    transform: 'scale(1.05)'
-                  }
-                }}
-              >
-                Apply Now
-              </Button>
             </Flex>
           </Flex>
 
@@ -322,12 +325,35 @@ export default function JobsPage() {
                 paddingTop: '1rem'
               }}
             >
-              <Heading 
-                variant="display-strong-s"
-                className={styles.title}
+              <Flex 
+                justifyContent="space-between" 
+                alignItems="center"
+                gap="m"
+                style={{
+                  marginBottom: '1rem',
+                  '@media (max-width: 640px)': {
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }
+                }}
               >
-                Senior Electrical Engineer / CTO
-              </Heading>
+                <Heading 
+                  variant="display-strong-s"
+                  className={styles.title}
+                >
+                  Senior Electrical Engineer / CTO
+                </Heading>
+                <Button
+                  variant="secondary"
+                  onClick={openApplyForm}
+                  className={styles.applyButton}
+                  style={buttonStyles.applyButton}
+                >
+                  Apply Now
+                  <span className={styles.buttonArrow}>→</span>
+                </Button>
+              </Flex>
               <Text 
                 variant="body-default-m"
                 onBackground="neutral-weak"
@@ -357,12 +383,41 @@ export default function JobsPage() {
                 paddingTop: '1rem'
               }}
             >
-              <Heading 
-                variant="display-strong-s"
-                className={styles.title}
+              <Flex 
+                justifyContent="space-between" 
+                alignItems="center"
+                gap="m"
+                style={{
+                  '@media (max-width: 640px)': {
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }
+                }}
               >
-                Lead Operations / Tech
-              </Heading>
+                <Heading 
+                  variant="display-strong-s"
+                  className={styles.title}
+                >
+                  Lead Operations / Tech
+                </Heading>
+                <Button
+                  variant="secondary"
+                  onClick={openApplyForm}
+                  style={{ 
+                    ...buttonStyles.applyButton,
+                    '&:hover': {
+                      ...buttonStyles.applyButton,
+                      '&::after': {
+                        opacity: 1,
+                        transform: 'translateX(0)'
+                      }
+                    }
+                  }}
+                >
+                  Apply Now
+                </Button>
+              </Flex>
               <Text 
                 variant="body-default-m"
                 onBackground="neutral-weak"
@@ -392,12 +447,41 @@ export default function JobsPage() {
                 paddingTop: '1rem'
               }}
             >
-              <Heading 
-                variant="display-strong-s"
-                className={styles.title}
+              <Flex 
+                justifyContent="space-between" 
+                alignItems="center"
+                gap="m"
+                style={{
+                  '@media (max-width: 640px)': {
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }
+                }}
               >
-                Researcher - Plasma Physics
-              </Heading>
+                <Heading 
+                  variant="display-strong-s"
+                  className={styles.title}
+                >
+                  Researcher - Plasma Physics
+                </Heading>
+                <Button
+                  variant="secondary"
+                  onClick={openApplyForm}
+                  style={{ 
+                    ...buttonStyles.applyButton,
+                    '&:hover': {
+                      ...buttonStyles.applyButton,
+                      '&::after': {
+                        opacity: 1,
+                        transform: 'translateX(0)'
+                      }
+                    }
+                  }}
+                >
+                  Apply Now
+                </Button>
+              </Flex>
               <Text 
                 variant="body-default-m"
                 onBackground="neutral-weak"
@@ -428,19 +512,46 @@ export default function JobsPage() {
         paddingX="l"
         paddingY="m"
         justifyContent="space-between"
+        alignItems="center"
         style={{ 
           borderTop: '1px solid #374151',
           zIndex: 20,
           bottom: 0,
           left: 0,
           right: 0,
-          height: '60px'
+          height: '60px',
+          background: 'rgba(17, 24, 39, 0.95)',
+          backdropFilter: 'blur(8px)',
+          '@media (max-width: 640px)': {
+            flexDirection: 'column',
+            height: 'auto',
+            padding: '1rem',
+            gap: '0.5rem'
+          }
         }}
       >
-        <Text variant="body-default-s" onBackground="neutral-weak">
-          © 2024 Tobe Energy, <Link href="https://github.com/h2colby/working-tobe">MIT License</Link>
+        <Text 
+          variant="body-default-s" 
+          onBackground="neutral-weak"
+          style={{
+            '@media (max-width: 640px)': {
+              textAlign: 'center',
+              marginBottom: '0.5rem'
+            }
+          }}
+        >
+          © 2024 Tobe Energy, <Link href="https://github.com/h2colby">MIT License</Link>
         </Text>
-        <Flex gap="12" style={{ paddingBottom: '4px' }}>
+        <Flex 
+          gap="12" 
+          alignItems="center" 
+          justifyContent="center"
+          style={{
+            '@media (max-width: 640px)': {
+              width: '100%'
+            }
+          }}
+        >
           <Button
             href="https://twitter.com/h2colby"
             prefixIcon="twitter"

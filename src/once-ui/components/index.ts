@@ -39,6 +39,7 @@ export { NavIcon } from './NavIcon';
 export { RadioButton } from './RadioButton';
 export type { RadioButtonProps } from './RadioButton';
 export { RevealFx } from './RevealFx';
+export type { RevealFxProps } from './RevealFx';
 export { Scroller } from './Scroller';
 export { SegmentedControl } from './SegmentedControl';
 export { Select } from './Select';

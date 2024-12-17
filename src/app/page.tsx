@@ -95,7 +95,11 @@ export default function Home() {
 			flex={1}
 			paddingTop="l"
 			paddingX="l"
-			style={{color: 'white', minHeight: '100vh' }}
+			style={{ 
+				color: 'white', 
+				minHeight: '100vh',
+				paddingBottom: '80px'
+			}}
 		>
 			{isContactOpen && (
 				<Flex
@@ -254,8 +258,8 @@ export default function Home() {
 									backdropFilter: 'blur(var(--static-space-1))'
 								}}
 							>
-								40% more efficient electrolysis.
-								<span className="brand-on-background-medium"> Costs 75% less.</span>
+								Electrolysis:
+								<span className="brand-on-background-medium"> 45% more efficient. 75% cheaper.</span>
 							</InlineCode>
 							<Heading
 								wrap="balance"
@@ -272,6 +276,7 @@ export default function Home() {
 									id="readDocs"
 									href="/whitepapers"
 									variant="secondary"
+									size="l"
 								>
 									<Flex alignItems="center" gap="8">
 										Read the Whitepaper
@@ -279,11 +284,15 @@ export default function Home() {
 									</Flex>
 								</Button>
 								<Button
+									id="contactUs"
 									variant="secondary"
 									onClick={openContactForm}
 									size="l"
 								>
-									Contact Us
+									<Flex alignItems="center" gap="8">
+										Contact Us
+										<Arrow trigger="#contactUs" />
+									</Flex>
 								</Button>
 							</Flex>
 						</Flex>
@@ -301,7 +310,8 @@ export default function Home() {
 							backdropFilter: 'blur(16px)',
 							boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
 							border: '1px solid rgba(255, 255, 255, 0.18)',
-							borderRadius: '10px'
+							borderRadius: '10px',
+							marginBottom: '2rem'
 						}}
 					>
 						{NAVIGATION_LINKS.map((link) => (
@@ -350,19 +360,46 @@ export default function Home() {
 				paddingX="l"
 				paddingY="m"
 				justifyContent="space-between"
+				alignItems="center"
 				style={{ 
 					borderTop: '1px solid #374151',
 					zIndex: 20,
 					bottom: 0,
 					left: 0,
 					right: 0,
-					height: '60px'
+					height: '60px',
+					background: 'rgba(17, 24, 39, 0.95)',
+					backdropFilter: 'blur(8px)',
+					'@media (max-width: 640px)': {
+						flexDirection: 'column',
+						height: 'auto',
+						padding: '1rem',
+						gap: '0.5rem'
+					}
 				}}
 			>
-				<Text variant="body-default-s" onBackground="neutral-weak">
-					© 2024 Tobe Energy, <Link href="https://github.com/h2colby/working-tobe">MIT License</Link>
+				<Text 
+					variant="body-default-s" 
+					onBackground="neutral-weak"
+					style={{
+						'@media (max-width: 640px)': {
+							textAlign: 'center',
+							marginBottom: '0.5rem'
+						}
+					}}
+				>
+					© 2024 Tobe Energy, <Link href="https://github.com/h2colby">MIT License</Link>
 				</Text>
-				<Flex gap="12" style={{ paddingBottom: '4px' }}>
+				<Flex 
+					gap="12" 
+					alignItems="center" 
+					justifyContent="center"
+					style={{
+						'@media (max-width: 640px)': {
+							width: '100%'
+						}
+					}}
+				>
 					<Button
 						href="https://twitter.com/h2colby"
 						prefixIcon="twitter"
